@@ -6,7 +6,7 @@
 docker-compose up -d
 ```
 
-## 說明
+## 基本名詞說明
 
 ### Virtual Host
 - 無共樣domain name，對應同IP無共樣服務。
