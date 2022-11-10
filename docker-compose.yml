@@ -6,8 +6,8 @@ services:
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     ports:
-      - "127.0.0.1:80:80"
-      - "127.0.0.1:443:443"
+      - 80:80
+      - 443:443
     volumes:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d
