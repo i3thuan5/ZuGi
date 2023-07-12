@@ -11,7 +11,12 @@ branches:
     - CD
 jobs:
   include:
-    - name: test
+    - name: Check YAML format
+      install:
+        - pip install yamllint
+      script:
+        - yamllint .
+    - name: test docker
       services:
       - docker
       script:
