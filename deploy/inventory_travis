@@ -2,5 +2,5 @@ all:
   hosts:
     tsiunnsuann:
       ansible_host: "{{ DEPLOY_HOST }}"
-      ansible_user: "{{ tsuanan_repo|lower }}"
+      ansible_user: "{{ DEPLOY_HOST_USER }}"
       ansible_ssh_private_key_file: "{{ TRAVIS_TSUKI_SSH_KEY_PATH }}"
