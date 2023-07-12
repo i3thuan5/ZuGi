@@ -25,7 +25,7 @@ jobs:
         - curl localhost/
     - stage: deploy
       name: deploy
-      if: (type = push or type = cron) and (branch = master or branch = CD)
+      if: (type = push or type = cron) and (branch = main or branch = CD)
       install:
         - pip install ansible
       before_script:
