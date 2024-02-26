@@ -1,4 +1,4 @@
-FROM nginxproxy/nginx-proxy
+FROM nginxproxy/nginx-proxy:1.5-alpine
 RUN { \
       echo 'server_tokens off;'; \
       echo 'client_max_body_size 1G;'; \
