@@ -22,4 +22,5 @@ jobs:
         - docker
       script:
         - docker-compose up -d --build
+        - sleep 3
         - curl localhost/
