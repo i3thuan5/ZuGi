@@ -30,8 +30,6 @@ services:
       - vhost_data:/etc/nginx/vhost.d
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      DEFAULT_EMAIL: ${DEFAULT_EMAIL}
     logging:
       driver: "json-file"
       options:
