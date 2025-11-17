@@ -24,7 +24,6 @@ docker-compose up -d
 
 #### 做法
 用[acme-companion](https://github.com/nginx-proxy/acme-companion)，設定在`docker-compse.yml`。
-愛設定`DEFAULT_EMAIL`，憑證過期會通知。
 
 ### 其他文件
 苗栗話用个virtual host，完整英文[文件](https://github.com/nginx-proxy/acme-companion#readme)。
