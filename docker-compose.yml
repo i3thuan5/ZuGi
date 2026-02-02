@@ -7,8 +7,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "[::]:80:80"
-      - "[::]:443:443"
     volumes:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d
