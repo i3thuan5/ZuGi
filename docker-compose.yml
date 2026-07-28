@@ -5,8 +5,8 @@ services:
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     volumes:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d
@@ -28,8 +28,6 @@ services:
       - vhost_data:/etc/nginx/vhost.d
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      DEFAULT_EMAIL: ${DEFAULT_EMAIL}
     logging:
       driver: "json-file"
       options:
