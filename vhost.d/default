@@ -1,0 +1,16 @@
+# nginx-proxy 會共這个檔 include 入去逐个 virtual host 的 server block
+#（若是有 /etc/nginx/vhost.d/<domain> 專屬設定，彼个 domain 就袂讀這个檔）。
+#
+# 502、503 的時，顯示維護中頁面。
+
+error_page 502 503 /__maintenance__/index.html;
+
+# 後端家己回傳 502/503 嘛換做維護頁面
+proxy_intercept_errors on;
+
+location ^~ /__maintenance__/ {
+    internal;
+    alias /usr/share/nginx/maintenance/;
+    add_header Cache-Control "no-store" always;
+    add_header Retry-After "600" always;
+}
