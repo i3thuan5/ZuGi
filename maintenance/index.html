@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>網站維護中 | Under Maintenance</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --card: #ffffff;
+      --text: #2b2b2b;
+      --muted: #6b6b6b;
+      --accent: #b5562b;
+      --line: #e6e1d8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1b19;
+        --card: #262522;
+        --text: #ecebe8;
+        --muted: #a8a59f;
+        --accent: #e08a5c;
+        --line: #3a3834;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+        "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.7;
+    }
+    main {
+      width: 100%;
+      max-width: 520px;
+      padding: 40px 32px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      color: var(--accent);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+    }
+    p { margin: 0 0 8px; }
+    .en {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .en strong { color: var(--text); }
+    button {
+      margin-top: 24px;
+      padding: 10px 24px;
+      font: inherit;
+      color: #fff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>
+    </svg>
+    <h1>網站維護中 (502)</h1>
+    <p>系統正在進行維護或更新，暫時無法提供服務。</p>
+    <p>造成不便，敬請見諒，請稍後再試。</p>
+
+    <div class="en">
+      <p><strong>Under Maintenance</strong></p>
+      <p>This site is temporarily unavailable. Please try again later.</p>
+    </div>
+
+    <button type="button" onclick="location.reload()">重新整理 Reload</button>
+  </main>
+</body>
+</html>

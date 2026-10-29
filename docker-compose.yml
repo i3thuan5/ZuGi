@@ -10,6 +10,8 @@ services:
     volumes:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d
+      - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
+      - ./maintenance:/usr/share/nginx/maintenance:ro
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
