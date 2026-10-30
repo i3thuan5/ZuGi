@@ -3,7 +3,7 @@
 
 ## 用法
 ```
-docker-compose up -d
+docker compose up -d --build
 ```
 
 ## 基本名詞說明
