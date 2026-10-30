@@ -3,17 +3,16 @@ services:
   nginx-proxy:
     build: .
     labels:
-      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+      - com.github.nginx-proxy.nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - cert_data:/etc/nginx/certs
-      - vhost_data:/etc/nginx/vhost.d
-      - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
-      - ./maintenance:/usr/share/nginx/maintenance:ro
+      - cert_data:/etc/nginx/certs:ro
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
+      - ./maintenance:/usr/share/nginx/maintenance:ro
     networks:
       - default
       - nginx-bridge
@@ -24,12 +23,12 @@ services:
         max-file: "10"
     restart: always
   nginx-proxy-acme:
-    image: nginxproxy/acme-companion:2.3
+    image: nginxproxy/acme-companion:2.8.2@sha256:e3c5fb08bf623ae93dbc945d78fe50040c1fa107ddf59f7ee04ba6a61f34cbc1
     volumes:
       - cert_data:/etc/nginx/certs
-      - vhost_data:/etc/nginx/vhost.d
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme_data:/etc/acme.sh
     logging:
       driver: "json-file"
       options:
@@ -38,7 +37,7 @@ services:
     restart: always
 
 volumes:
-  vhost_data:
+  acme_data:
   cert_data:
   html_data:
 
