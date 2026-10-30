@@ -29,6 +29,7 @@ services:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d
       - html_data:/usr/share/nginx/html
+      - acme_data:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro
     logging:
       driver: "json-file"
@@ -38,6 +39,7 @@ services:
     restart: always
 
 volumes:
+  acme_data:
   vhost_data:
   cert_data:
   html_data:
