@@ -3,12 +3,12 @@ services:
   nginx-proxy:
     build: .
     labels:
-      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+      - com.github.nginx-proxy.nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - cert_data:/etc/nginx/certs
+      - cert_data:/etc/nginx/certs:ro
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
