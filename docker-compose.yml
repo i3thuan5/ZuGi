@@ -24,7 +24,7 @@ services:
         max-file: "10"
     restart: always
   nginx-proxy-acme:
-    image: nginxproxy/acme-companion:2.3
+    image: nginxproxy/acme-companion:2.8.2@sha256:e3c5fb08bf623ae93dbc945d78fe50040c1fa107ddf59f7ee04ba6a61f34cbc1
     volumes:
       - cert_data:/etc/nginx/certs
       - vhost_data:/etc/nginx/vhost.d

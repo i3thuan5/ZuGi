@@ -3,6 +3,7 @@ extends: default
 
 rules:
   line-length:
+    allow-non-breakable-inline-mappings: true
     ignore:
       - '.travis.yml'
       - 'deploy/deploy.yaml'
