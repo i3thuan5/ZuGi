@@ -11,7 +11,6 @@ services:
       - cert_data:/etc/nginx/certs
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - vhost_data:/etc/nginx/vhost.d
       - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
       - ./maintenance:/usr/share/nginx/maintenance:ro
     networks:
@@ -29,7 +28,6 @@ services:
       - cert_data:/etc/nginx/certs
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - vhost_data:/etc/nginx/vhost.d
       - acme_data:/etc/acme.sh
     logging:
       driver: "json-file"
@@ -40,7 +38,6 @@ services:
 
 volumes:
   acme_data:
-  vhost_data:
   cert_data:
   html_data:
 
