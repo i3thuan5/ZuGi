@@ -2,15 +2,16 @@
 #（若是有 /etc/nginx/vhost.d/<domain> 專屬設定，彼个 domain 就袂讀這个檔）。
 #
 # 502 的時，顯示維護中頁面。
+# 頁面佮 nginx-proxy 預設 server 用仝一个檔：/usr/share/nginx/html/errors/50x.html
 
-error_page 502 /__maintenance__/index.html;
+error_page 502 /__maintenance__/50x.html;
 
 # 後端家己回傳 502 嘛換做維護頁面
 proxy_intercept_errors on;
 
 location ^~ /__maintenance__/ {
     internal;
-    alias /usr/share/nginx/maintenance/;
+    alias /usr/share/nginx/html/errors/;
     add_header Cache-Control "no-store" always;
     add_header Retry-After "600" always;
 }
