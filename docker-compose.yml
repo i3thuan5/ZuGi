@@ -12,7 +12,7 @@ services:
       - html_data:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
-      - ./maintenance:/usr/share/nginx/maintenance:ro
+      - ./maintenance:/usr/share/nginx/html/errors:ro
     networks:
       - default
       - nginx-bridge
