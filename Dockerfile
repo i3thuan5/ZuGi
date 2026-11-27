@@ -1,7 +1,7 @@
 FROM nginxproxy/nginx-proxy:1.11.7-alpine@sha256:9c0aa55d7de61455a3b3f726cb2e0860b73ceb8733eaecf59edf71c42c5e67db
 RUN { \
       echo 'server_tokens off;'; \
-      echo 'client_max_body_size 1G;'; \
+      echo 'client_max_body_size 10G;'; \
       echo 'proxy_read_timeout 600s;'; \
       echo 'proxy_busy_buffers_size 64k;'; \
       echo 'proxy_buffers 4 64k;'; \
