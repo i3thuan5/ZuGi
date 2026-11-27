@@ -13,8 +13,6 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
       - ./maintenance:/usr/share/nginx/maintenance:ro
-    environment:
-      ENABLE_HTTP2: "false"
     networks:
       - default
       - nginx-bridge

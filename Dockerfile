@@ -1,4 +1,4 @@
-FROM nginxproxy/nginx-proxy:1.11.6-alpine@sha256:99376e95c8754547213d411222a2c4dca046d974e753ae2a1c9aef09b2c03364
+FROM nginxproxy/nginx-proxy:1.11.7-alpine@sha256:9c0aa55d7de61455a3b3f726cb2e0860b73ceb8733eaecf59edf71c42c5e67db
 RUN { \
       echo 'server_tokens off;'; \
       echo 'client_max_body_size 1G;'; \
