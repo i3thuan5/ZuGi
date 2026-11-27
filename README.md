@@ -27,12 +27,12 @@ docker compose up -d --build
 
 ### 容器架構
 - `nginx-proxy`：官方nginx，對外開80、443。無掛Docker socket。
-- `nginx-proxy-gen`：[docker-gen](https://github.com/nginx-proxy/nginx-proxy/blob/main/docs/README.md#separate-containers)，看Docker事件產生nginx設定，通知`nginx-proxy` reload。無接任何網路。
+- `nginx-proxy-dockergen`：[docker-gen](https://github.com/nginx-proxy/nginx-proxy/blob/main/docs/README.md#separate-containers)，看Docker事件產生nginx設定，通知`nginx-proxy` reload。無接任何網路。
 - `nginx-proxy-acme`：acme-companion，簽SSL憑證。
-- Docker socket干焦`nginx-proxy-gen`佮`nginx-proxy-acme`有掛，攏是唯讀。
+- Docker socket干焦`nginx-proxy-dockergen`佮`nginx-proxy-acme`有掛，攏是唯讀。
 
 #### 注意
-- `nginx-proxy-gen`負責產生動態設定，所以會影響nginx設定的環境變數（親像`ENABLE_HTTP2`、`TRUST_DOWNSTREAM_PROXY`），愛設佇`nginx-proxy-gen`。
+- `nginx-proxy-dockergen`負責產生動態設定，所以會影響nginx設定的環境變數（親像`ENABLE_HTTP2`、`TRUST_DOWNSTREAM_PROXY`），愛設佇`nginx-proxy-dockergen`。
 - ZuGi ê nginx設定（`client_max_body_size`等）佇`Dockerfile`，囥`/etc/nginx/zugi.d/`。
 
 ### 維護頁面
@@ -42,7 +42,7 @@ docker compose up -d --build
 #### 注意
 - 若是`/etc/nginx/vhost.d/`有某一个domain的專屬設定檔，彼个domain就袂讀`default`，愛家己加入去。
 - 後端家己回傳的502，嘛會換做維護頁面。
-- `vhost.d/default` ài hōo`nginx-proxy` kah `nginx-proxy-gen` 看。docker-gen若看bē tio̍h這个檔，就袂kā維護頁面加入去設定。
+- `vhost.d/default` ài hōo`nginx-proxy` kah `nginx-proxy-dockergen` 看。docker-gen若看bē tio̍h這个檔，就袂kā維護頁面加入去設定。
 
 ### 其他文件
 苗栗話用个virtual host，完整英文[文件](https://github.com/nginx-proxy/acme-companion#readme)。
