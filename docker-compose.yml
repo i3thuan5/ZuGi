@@ -4,13 +4,14 @@ services:
     build: .
     labels:
       - com.github.nginx-proxy.nginx
+      - com.github.nginx-proxy.nginx-proxy.nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
+      - nginx_conf:/etc/nginx/conf.d:ro
       - cert_data:/etc/nginx/certs:ro
-      - html_data:/usr/share/nginx/html
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - html_data:/usr/share/nginx/html:ro
       - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
       - ./maintenance:/usr/share/nginx/maintenance:ro
     networks:
@@ -22,13 +23,29 @@ services:
         max-size: "1m"
         max-file: "10"
     restart: always
+  nginx-proxy-dockergen:
+    image: nginxproxy/nginx-proxy:1.11.7-dockergen@sha256:96cea1f9730caf5c1426887d21e9c31f7a0a5163c76878abc5ae07e027e9ba42
+    labels:
+      - com.github.nginx-proxy.docker-gen
+    volumes:
+      - nginx_conf:/etc/nginx/conf.d:rw
+      - cert_data:/etc/nginx/certs:ro
+      - ./vhost.d/default:/etc/nginx/vhost.d/default:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    network_mode: none
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    restart: always
   nginx-proxy-acme:
     image: nginxproxy/acme-companion:2.8.2@sha256:e3c5fb08bf623ae93dbc945d78fe50040c1fa107ddf59f7ee04ba6a61f34cbc1
     volumes:
-      - cert_data:/etc/nginx/certs
-      - html_data:/usr/share/nginx/html
+      - cert_data:/etc/nginx/certs:rw
+      - html_data:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - acme_data:/etc/acme.sh
+      - acme_data:/etc/acme.sh:rw
     logging:
       driver: "json-file"
       options:
@@ -40,6 +57,7 @@ volumes:
   acme_data:
   cert_data:
   html_data:
+  nginx_conf:
 
 networks:
   nginx-bridge:
