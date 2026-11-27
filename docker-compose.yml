@@ -23,7 +23,7 @@ services:
         max-size: "1m"
         max-file: "10"
     restart: always
-  nginx-proxy-gen:
+  nginx-proxy-dockergen:
     image: nginxproxy/nginx-proxy:1.11.7-dockergen@sha256:96cea1f9730caf5c1426887d21e9c31f7a0a5163c76878abc5ae07e027e9ba42
     labels:
       - com.github.nginx-proxy.docker-gen
